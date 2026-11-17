@@ -90,14 +90,14 @@ public partial class MainPage : ContentPage
             await DisplayAlertAsync(
                 "sukces",
                 "liczniki zostały zapisane",
-                "ok");
+                "zamknij");
         }
         catch (Exception ex)
         {
             await DisplayAlertAsync(
                 "blad",
                 $"nie udało sie zapisac: {ex.Message}",
-                "ok");
+                "zamknij");
         }
     }
 
@@ -138,9 +138,9 @@ public partial class MainPage : ContentPage
         catch (Exception ex)
         {
             _ = DisplayAlertAsync(
-                "Błąd",
-                $"Nie udało się wczytać danych: {ex.Message}",
-                "OK");
+                "bład",
+                $"nie udało sie wczytać danych: {ex.Message}",
+                "zamknij");
         }
     }
 }
