@@ -20,11 +20,16 @@ public partial class MainPage : ContentPage
         LoadCounters();
     }
 
-    private void OnAddCounterClicked(object sender, EventArgs e)
+   private void AddCounterClicked(object sender, EventArgs e)
 {
+    var name = NameEntry.Text?.Trim();
+
+    if (string.IsNullOrEmpty(name))
+        return;
+
     Counters.Add(new CounterItem
     {
-        Name = NameEntry.Text ?? "",
+        Name = name,
         Value = 0
     });
 
