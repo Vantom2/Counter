@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Counter.Views.AllCountersPage"
+    Title="Liczniki">
+    <Grid RowDefinitions="Auto,Auto,*"
+          Padding="10"
+          RowSpacing="10">
+        <Grid Grid.Row="0"
+              ColumnDefinitions="*,Auto,Auto"
+              ColumnSpacing="10">
+            <Entry x:Name="NameEntry"
+                   Placeholder="Nazwa nowego licznika..."
+                   Grid.Column="0" />
+            <Button Text="Dodaj"
+                    Grid.Column="1"
+                    Clicked="OnAddCounterClicked" />
+            <Button Text="Zapisz"
+                    Grid.Column="2"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    Clicked="OnSaveClicked" />
+        </Grid>
+        <Label Grid.Row="1"
+               Text="Wybierz licznik, aby zmienić jego wartość"
+               FontSize="14" />
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Counters}"
+                        SelectionMode="Single"
+                        SelectionChanged="OnCounterSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Gray"
+                            StrokeThickness="1"
+                            Padding="15"
+                            Margin="0,5">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+
+                        <Grid ColumnDefinitions="*,Auto"
+                              ColumnSpacing="10">
+                            <Label Text="{Binding Name}"
+                                   Grid.Column="0"
+                                   FontSize="18"
+                                   VerticalOptions="Center" />
+                            <Label Text="{Binding Value}"
+                                   Grid.Column="1"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+    
